@@ -1,0 +1,71 @@
+{
+  "training_examples": 80,
+  "heldout_examples": 20,
+  "validation_passed": true,
+  "errors": [],
+  "unique_training_examples": 80,
+  "exact_input_overlap_train_eval": 0,
+  "mission_word_count": {
+    "min": 11,
+    "max": 26,
+    "mean": 16.45
+  },
+  "coverage": {
+    "ages": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "environments": [
+      "community garden",
+      "courtyard",
+      "home garden",
+      "public park",
+      "school garden",
+      "school grounds",
+      "school playground",
+      "walking path"
+    ],
+    "topics": [
+      "biodiversity",
+      "clouds",
+      "colours in nature",
+      "habitats",
+      "insects",
+      "leaves",
+      "microclimate",
+      "natural sounds",
+      "patterns",
+      "plants",
+      "seeds",
+      "shadows",
+      "soil",
+      "stones",
+      "sunlight",
+      "symmetry",
+      "textures",
+      "tree bark",
+      "weather",
+      "wind"
+    ],
+    "durations": [
+      5,
+      6,
+      7,
+      8,
+      10,
+      12,
+      15,
+      18,
+      20
+    ]
+  }
+}

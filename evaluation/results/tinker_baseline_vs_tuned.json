@@ -1,0 +1,1152 @@
+{
+  "experiment": "TrailTutor Tinker SFT v1",
+  "base_model": "Qwen/Qwen3.5-4B",
+  "training_examples": 80,
+  "heldout_examples": 20,
+  "training_epochs": 1,
+  "lora_rank": 16,
+  "learning_rate": 0.0001,
+  "baseline": {
+    "cases": 20,
+    "score": 84,
+    "max_score": 140,
+    "percentage": 60.0,
+    "valid_json": 12,
+    "all_fields_present": 12,
+    "exactly_two_questions": 12,
+    "outdoor_action": 12,
+    "safety_present": 12,
+    "reflection_present": 12,
+    "mission_under_70_words": 12,
+    "average_latency_seconds": 3.355
+  },
+  "tuned": {
+    "cases": 20,
+    "score": 112,
+    "max_score": 140,
+    "percentage": 80.0,
+    "valid_json": 16,
+    "all_fields_present": 16,
+    "exactly_two_questions": 16,
+    "outdoor_action": 16,
+    "safety_present": 16,
+    "reflection_present": 16,
+    "mission_under_70_words": 16,
+    "average_latency_seconds": 2.907
+  },
+  "percentage_point_improvement": 20.0,
+  "cases": [
+    {
+      "case": 1,
+      "input": {
+        "age": 9,
+        "environment": "school garden",
+        "topic": "insects",
+        "duration_minutes": 6
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three different insects in the school garden without touching them.\",\n  \"observe\": \"Look closely at their colors, shapes, and where they are hiding.\",\n  \"questions\": [\"What colors do you see?\", \"Where are they hiding?\"],\n  \"safety\": \"Do not touch wildlife or damage plants.\",\n  \"reflection\": \"How did looking closely help you see more?\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different insects in the school garden without touching them.\",\n  \"observe\": \"Look closely at their colors, shapes, and where they are hiding.\",\n  \"questions\": [\"What colors do you see?\", \"Where are they hiding?\"],\n  \"safety\": \"Do not touch wildlife or damage plants.\",\n  \"reflection\": \"How did looking closely help you see more?\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different insects in the school garden without touching them.\",\n  \"observe\": \"Look closely at their colors, tasting, and where they are hiding.\",\n  \"questions\": [\"What colors do you see?\", \"Where are they hiding?\"],\n  \"safety\": \"Do not touch wildlife or damage plants.\",\n  \"reflection\": \"How did looking closely help you see more?\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different insects in the school garden without touching them.\",\n  \"observe\": \"Look closely at their colors, shapes, and where they are hiding.\",\n  \"questions\": [\"What colors do you see?\", \"Where are they hiding?\"],\n  \"safety\": \"Do not touch wildlife or damage plants.\",\n  \"reflection\": \"How did looking closely help you see more?\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different insects in the school garden without touching them.\",\n  \"observe",
+        "parsed_output": null,
+        "latency_seconds": 4.908,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 9 column 1 (char 361)"
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 6 minutes, look for insects without catching or harming them.\", \"observe\": \"Notice movement, colour, size, and where they are moving.\", \"questions\": [\"Which insect moved the most?\", \"Which colour appeared most often?\"], \"safety\": \"Use permitted paths, do not disturb other students, and do not enter restricted areas.\", \"reflection\": \"Describe one feature you would probably have missed on a screen.\"}\n\n{\"mission\": \"In about 6 minutes, look for insects without catching or harming them.\", \"observe\": \"Notice movement, colour, size, and where they are moving.\", \"questions\": [\"Which insect moved the most?\", \"Which colour appeared most often?\"], \"safety\": \"Use permitted paths, do not disturb other students, and do not enter restricted areas.\", \"reflection\": \"Describe one feature you would probably have missed on a screen.\"}<|endoftext|>",
+        "parsed_output": null,
+        "latency_seconds": 8.207,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 3 column 1 (char 425)"
+        }
+      }
+    },
+    {
+      "case": 2,
+      "input": {
+        "age": 10,
+        "environment": "school grounds",
+        "topic": "symmetry",
+        "duration_minutes": 12
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find two objects on the school grounds that have perfect mirror symmetry.\",\n  \"observe\": \"Look for shapes where one half is a reflection of the other.\",\n  \"questions\": [\n    \"Which object has the most visible symmetry?\",\n    \"Can you find a hidden symmetrical pattern on a building?\"\n  ],\n  \"safety\": \"Stay on designated paths and do not touch wildlife.\",\n  \"reflection\": \"Write down one thing you learned about patterns.\"\n}\n\n```json\n{\n  \"mission\": \"Find two objects on the school grounds that have perfect mirror symmetry.\",\n  \"observe\": \"Look for shapes where one half is a reflection of the other.\",\n  \"questions\": [\n    \"Which object has the most visible symmetry?\",\n    \"Can you find a hidden symmetrical pattern on a building?\"\n  ],\n  \"safety\": \"Stay on designated paths and do not touch wildlife.\",\n  \"reflection\": \"Write down one thing you learned about patterns.\"\n}\n```<|endoftext|>",
+        "parsed_output": null,
+        "latency_seconds": 3.173,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 12 column 1 (char 442)"
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 10 minutes, find three natural objects that show symmetry.\", \"observe\": \"Compare lines, shapes, and repeated forms.\", \"questions\": [\"Which object has the strongest symmetry?\", \"Which object is least symmetrical?\"], \"safety\": \"Use permitted paths, avoid roads and maintenance areas, and do not disturb living things.\", \"reflection\": \"Describe one feature you would probably have missed on a screen.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 10 minutes, find three natural objects that show symmetry.",
+          "observe": "Compare lines, shapes, and repeated forms.",
+          "questions": [
+            "Which object has the strongest symmetry?",
+            "Which object is least symmetrical?"
+          ],
+          "safety": "Use permitted paths, avoid roads and maintenance areas, and do not disturb living things.",
+          "reflection": "Describe one feature you would probably have missed on a screen."
+        },
+        "latency_seconds": 3.238,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 3,
+      "input": {
+        "age": 11,
+        "environment": "public park",
+        "topic": "leaves",
+        "duration_minutes": 5
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find 3 different types of leaves in the park and observe their shapes and colors.\",\n  \"observe\": \"Look closely at the veins, edges, and colors of the leaves without touching them.\",\n  \"questions\": [\n    \"Which leaf has the most interesting veins?\",\n    \"How does the color of the leaves change as they fall?\"\n  ],\n  \"safety\": \"Stay on the grass and walk slowly. Do not touch wildlife or damage plants.\",\n  \"reflection\": \"Write down one thing you learned about nature today.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 11.\n        *   Environment: public park.\n        *   Topic: leaves.\n        *   Available time: 5 minutes.\n    *   **Input Data:** Age 11, Environment public park, Topic leaves, Time 5 minutes.\n\n2.  **Drafting the Content:**\n    *   *Mission:* Find 3 different types of leaves in the park and observe their shapes and colors",
+        "parsed_output": {
+          "mission": "Find 3 different types of leaves in the park and observe their shapes and colors.",
+          "observe": "Look closely at the veins, edges, and colors of the leaves without touching them.",
+          "questions": [
+            "Which leaf has the most interesting veins?",
+            "How does the color of the leaves change as they fall?"
+          ],
+          "safety": "Stay on the grass and walk slowly. Do not touch wildlife or damage plants.",
+          "reflection": "Write down one thing you learned about nature today."
+        },
+        "latency_seconds": 3.146,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 5 minutes, find three fallen leaves without picking them up.\", \"observe\": \"Compare size, colour, shape, and visible veins.\", \"questions\": [\"Which leaf has the largest surface area?\", \"Which two leaves share the most visible features?\"], \"safety\": \"Use permitted paths, remain aware of cyclists and vehicles, and do not disturb wildlife.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 5 minutes, find three fallen leaves without picking them up.",
+          "observe": "Compare size, colour, shape, and visible veins.",
+          "questions": [
+            "Which leaf has the largest surface area?",
+            "Which two leaves share the most visible features?"
+          ],
+          "safety": "Use permitted paths, remain aware of cyclists and vehicles, and do not disturb wildlife.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 2.203,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 4,
+      "input": {
+        "age": 12,
+        "environment": "school playground",
+        "topic": "colours in nature",
+        "duration_minutes": 10
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three objects on the playground that reflect different shades of green.\",\n  \"observe\": \"Look closely at the leaves, grass, and painted surfaces.\",\n  \"questions\": [\n    \"Which shade of green looks brightest in the sunlight?\",\n    \"How does the green change when the sun moves?\"\n  ],\n  \"safety\": \"Do not touch wildlife or enter restricted areas.\",\n  \"reflection\": \"Write down your observations about the different greens you found.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 12.\n        *   Environment: school playground.\n        *   Topic: colours in nature.\n        *   Available time: 10 minutes.\n    *   **Input Data:** The user provided a JSON example in the prompt description (\"JSON: { ... }\"), but the instruction says \"Return ONLY valid JSON using exactly this structure\". I need to generate a *new* mission based on the constraints provided in the prompt (Age, Environment, Topic, Time), not just copy the example",
+        "parsed_output": null,
+        "latency_seconds": 3.209,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 12 column 1 (char 455)"
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 10 minutes, find five natural colours without touching anything.\", \"observe\": \"Notice the shade, brightness, and where each colour appears.\", \"questions\": [\"Which colour appeared most often?\", \"Which colour was hardest to find?\"], \"safety\": \"Stay within permitted school areas, away from moving vehicles and sports in progress, and do not damage anything.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 10 minutes, find five natural colours without touching anything.",
+          "observe": "Notice the shade, brightness, and where each colour appears.",
+          "questions": [
+            "Which colour appeared most often?",
+            "Which colour was hardest to find?"
+          ],
+          "safety": "Stay within permitted school areas, away from moving vehicles and sports in progress, and do not damage anything.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 2.26,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 5,
+      "input": {
+        "age": 13,
+        "environment": "walking path",
+        "topic": "habitats",
+        "duration_minutes": 20
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Walk 200 meters along the path and identify three distinct habitats.\",\n  \"observe\": \"Look for changes in plant life, soil type, and animal tracks.\",\n  \"questions\": [\n    \"How does the plant density change between the two areas?\",\n    \"What clues in the soil or leaves suggest a different habitat?\"\n  ],\n  \"safety\": \"Do not touch wildlife, do not enter restricted areas, and stay on the marked path.\",\n  \"reflection\": \"Write a short paragraph describing how the environment changes over distance.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 13.\n        *   Environment: walking path.\n        *   Topic: habitats.\n        *   Available time: 20 minutes.\n    *   **Input Data:** Age 13, Environment walking path, Topic habitats, Time 20 mins.\n\n2.  **Drafting the Content:**\n    *   *Mission:* Walk along the path for 20 minutes. Identify different",
+        "parsed_output": {
+          "mission": "Walk 200 meters along the path and identify three distinct habitats.",
+          "observe": "Look for changes in plant life, soil type, and animal tracks.",
+          "questions": [
+            "How does the plant density change between the two areas?",
+            "What clues in the soil or leaves suggest a different habitat?"
+          ],
+          "safety": "Do not touch wildlife, do not enter restricted areas, and stay on the marked path.",
+          "reflection": "Write a short paragraph describing how the environment changes over distance."
+        },
+        "latency_seconds": 3.172,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 15 minutes, compare three visible habitat zones along your route.\", \"observe\": \"Notice shade, vegetation height, ground cover, and nearby structures.\", \"questions\": [\"Which zone has the richest-looking vegetation?\", \"Which zone appears most sheltered?\"], \"safety\": \"Stay on the permitted path, remain aware of cyclists and vehicles, and do not enter restricted areas.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 15 minutes, compare three visible habitat zones along your route.",
+          "observe": "Notice shade, vegetation height, ground cover, and nearby structures.",
+          "questions": [
+            "Which zone has the richest-looking vegetation?",
+            "Which zone appears most sheltered?"
+          ],
+          "safety": "Stay on the permitted path, remain aware of cyclists and vehicles, and do not enter restricted areas.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 3.201,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 6,
+      "input": {
+        "age": 14,
+        "environment": "home garden",
+        "topic": "wind",
+        "duration_minutes": 8
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Walk around your garden and find three plants that move when the wind blows. Notice how they sway.\",\n  \"observe\": \"Look closely at how different plants respond to wind movement.\",\n  \"questions\": [\n    \"Which plant moves the most?\",\n    \"What makes the leaves move?\"\n  ],\n  \"safety\": \"Stay on the grass and do not touch wildlife.\",\n  \"reflection\": \"Think about how wind affects plants in your garden.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 14.\n        *   Environment: home garden.\n        *   Topic: wind.\n        *   Available time: 8 minutes.\n    *   **Input Data:** Age 14, Environment home garden, Topic wind, Time 8 minutes.\n\n2.  **Drafting the Content:**\n    *   *Mission:* Needs to be about wind in a garden, under 70 words total (including JSON structure? No, usually the content within the JSON values should be concise,",
+        "parsed_output": {
+          "mission": "Walk around your garden and find three plants that move when the wind blows. Notice how they sway.",
+          "observe": "Look closely at how different plants respond to wind movement.",
+          "questions": [
+            "Which plant moves the most?",
+            "What makes the leaves move?"
+          ],
+          "safety": "Stay on the grass and do not touch wildlife.",
+          "reflection": "Think about how wind affects plants in your garden."
+        },
+        "latency_seconds": 3.197,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 8 minutes, observe how the wind moves without touching anything.\", \"observe\": \"Notice visible movement in leaves, grass, flags, or loose clothing.\", \"questions\": [\"Which feature moves the most?\", \"In which direction is the wind strongest?\"], \"safety\": \"Stay within the safe garden area, away from tools, fences, and maintenance zones.\", \"reflection\": \"Describe one feature you would probably have missed on a screen.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 8 minutes, observe how the wind moves without touching anything.",
+          "observe": "Notice visible movement in leaves, grass, flags, or loose clothing.",
+          "questions": [
+            "Which feature moves the most?",
+            "In which direction is the wind strongest?"
+          ],
+          "safety": "Stay within the safe garden area, away from tools, fences, and maintenance zones.",
+          "reflection": "Describe one feature you would probably have missed on a screen."
+        },
+        "latency_seconds": 2.219,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 7,
+      "input": {
+        "age": 15,
+        "environment": "community garden",
+        "topic": "sunlight",
+        "duration_minutes": 18
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three plants in the community garden that receive different amounts of sunlight. Mark them with a stick.\",\n  \"observe\": \"Watch how the leaves change color and texture in the sun versus the shade.\",\n  \"questions\": [\n    \"Which plant has the most vibrant green leaves?\",\n    \"How does the leaf texture differ between the sun-exposed and shaded plants?\"\n  ],\n  \"safety\": \"Do not enter restricted areas or touch any wildlife.\",\n  \"reflection\": \"Write down your observations about how sunlight affects plant health.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 15.\n        *   Environment: community garden.\n        *   Topic: sunlight.\n        *   Available time: 18 minutes.\n    *   **Input Data:** Age 15, Environment community garden, Topic sunlight, Time 18 mins.\n\n2.  **Drafting the Content:**\n    *   *Mission:* Needs to be about sunlight in a community garden.\n    *",
+        "parsed_output": {
+          "mission": "Find three plants in the community garden that receive different amounts of sunlight. Mark them with a stick.",
+          "observe": "Watch how the leaves change color and texture in the sun versus the shade.",
+          "questions": [
+            "Which plant has the most vibrant green leaves?",
+            "How does the leaf texture differ between the sun-exposed and shaded plants?"
+          ],
+          "safety": "Do not enter restricted areas or touch any wildlife.",
+          "reflection": "Write down your observations about how sunlight affects plant health."
+        },
+        "latency_seconds": 4.235,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 15 minutes, find three places receiving different amounts of sunlight.\", \"observe\": \"Compare brightness, warmth, and shadow strength at each location.\", \"questions\": [\"Which location receives the strongest sunlight?\", \"What feature makes one location receive more sunlight than the others?\"], \"safety\": \"Use public paths, respect planted areas, and do not harvest anything.\", \"reflection\": \"Describe one detail you noticed only because you looked carefully.\"}\n\n{\"mission\": \"In about 15 minutes, find three places receiving different amounts of sunlight.\", \"observe\": \"Compare brightness, warmth, and shadow strength at each location.\", \"questions\": [\"Which location receives the strongest sunlight?\", \"What feature makes one location receive more sunlight than the others?\"], \"safety\": \"Use public paths, respect planted areas, and do not harvest anything.\", \"reflection\": \"Describe one detail you noticed only because you looked carefully.\"}<|endoftext|>",
+        "parsed_output": null,
+        "latency_seconds": 3.206,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 3 column 1 (char 483)"
+        }
+      }
+    },
+    {
+      "case": 8,
+      "input": {
+        "age": 16,
+        "environment": "courtyard",
+        "topic": "patterns",
+        "duration_minutes": 7
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three repeating patterns in the courtyard tiles or pavement.\",\n  \"observe\": \"Look closely at the shapes, colors, and arrangement of the ground.\",\n  \"questions\": [\n    \"What is the repeating unit in each pattern?\",\n    \"How do the patterns change as you move across the courtyard?\"\n  ],\n  \"safety\": \"Do not touch wildlife or enter restricted areas.\",\n  \"reflection\": \"Write down one pattern you found and how it looks.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 16.\n        *   Environment: courtyard.\n        *   Topic: patterns.\n        *   Available time: 7 minutes.\n    *   **Input Data:** The user provided a JSON example in the prompt description, but I need to generate *my own* JSON based on the rules, not just copy the example (though the example fits the criteria well). Wait, looking closely at the prompt, it says \"Return ONLY valid JSON using exactly this structure\". It also provides an example",
+        "parsed_output": {
+          "mission": "Find three repeating patterns in the courtyard tiles or pavement.",
+          "observe": "Look closely at the shapes, colors, and arrangement of the ground.",
+          "questions": [
+            "What is the repeating unit in each pattern?",
+            "How do the patterns change as you move across the courtyard?"
+          ],
+          "safety": "Do not touch wildlife or enter restricted areas.",
+          "reflection": "Write down one pattern you found and how it looks."
+        },
+        "latency_seconds": 3.183,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 5 minutes, look for repeating patterns in the environment.\", \"observe\": \"Notice lines, shapes, clusters, or regular spacing.\", \"questions\": [\"Which pattern repeats most clearly?\", \"What feature creates the repetition?\"], \"safety\": \"Stay within the permitted courtyard area and avoid stairs or rooftops.\", \"reflection\": \"Describe one pattern you would probably have missed on a screen.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 5 minutes, look for repeating patterns in the environment.",
+          "observe": "Notice lines, shapes, clusters, or regular spacing.",
+          "questions": [
+            "Which pattern repeats most clearly?",
+            "What feature creates the repetition?"
+          ],
+          "safety": "Stay within the permitted courtyard area and avoid stairs or rooftops.",
+          "reflection": "Describe one pattern you would probably have missed on a screen."
+        },
+        "latency_seconds": 2.217,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 9,
+      "input": {
+        "age": 17,
+        "environment": "school garden",
+        "topic": "tree bark",
+        "duration_minutes": 15
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Explore the school garden's trees and identify three different types of bark patterns.\",\n  \"observe\": \"Look closely at the texture, color, and shape of tree bark without touching it.\",\n  \"questions\": [\n    \"Which tree has the most rough texture?\",\n    \"How does the bark pattern change as you move higher up the trunk?\"\n  ],\n  \"safety\": \"Do not touch wildlife or enter restricted areas. Observe from a safe distance.\",\n  \"reflection\": \"Write down your observations about the bark patterns you found.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n    *   **Input Parameters:**\n        *   Age: 17\n        *   Environment: school garden\n        *   Topic: tree bark\n        *   Available time: 15 minutes\n\n2.  **Review the Provided JSON Example:**\n    *   The user provided a JSON block at the end of the prompt (\"JSON: { ... }\").\n    *   Wait, looking closely at the prompt structure:\n        *",
+        "parsed_output": null,
+        "latency_seconds": 3.17,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 12 column 1 (char 520)"
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 15 minutes, observe the bark of three trees without scratching or peeling it.\", \"observe\": \"Notice colour, cracks, ridges, smoothness, and repeating marks.\", \"questions\": [\"Which tree has the most visible pattern?\", \"Which two trees have the most similar bark?\"], \"safety\": \"Use permitted paths, do not climb trees, and do not disturb other people.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 15 minutes, observe the bark of three trees without scratching or peeling it.",
+          "observe": "Notice colour, cracks, ridges, smoothness, and repeating marks.",
+          "questions": [
+            "Which tree has the most visible pattern?",
+            "Which two trees have the most similar bark?"
+          ],
+          "safety": "Use permitted paths, do not climb trees, and do not disturb other people.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 2.169,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 10,
+      "input": {
+        "age": 7,
+        "environment": "school grounds",
+        "topic": "weather",
+        "duration_minutes": 6
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three different weather signs on the school grounds.\",\n  \"observe\": \"Look for wind, sun, or rain clues.\",\n  \"questions\": [\n    \"What sound does the wind make?\",\n    \"How does the sun feel on your skin?\"\n  ],\n  \"safety\": \"Stay on the playground, do not touch wildlife, and do not enter restricted areas.\",\n  \"reflection\": \"Share your findings with a partner.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 7.\n        *   Environment: school grounds.\n        *   Topic: weather.\n        *   Available time: 6 minutes.\n\n2.  **Drafting the Content:**\n    *   *Mission:* Find three different weather signs on the school grounds. (Good, fits topic and environment).\n    *   *Observe:* Look for wind, sun, or rain clues. (Simple, direct observation).\n    *   *Questions:* Need exactly two.\n        1.  What sound does",
+        "parsed_output": {
+          "mission": "Find three different weather signs on the school grounds.",
+          "observe": "Look for wind, sun, or rain clues.",
+          "questions": [
+            "What sound does the wind make?",
+            "How does the sun feel on your skin?"
+          ],
+          "safety": "Stay on the playground, do not touch wildlife, and do not enter restricted areas.",
+          "reflection": "Share your findings with a partner."
+        },
+        "latency_seconds": 3.154,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 6 minutes, observe the sky and nearby signs of weather.\", \"observe\": \"Notice cloud cover, sunlight, wind, and ground conditions.\", \"questions\": [\"Which sign of weather changed most?\", \"What would you probably feel if you were outside?\"], \"safety\": \"Use permitted school paths, avoid roads and maintenance areas, and do not disturb other people.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 6 minutes, observe the sky and nearby signs of weather.",
+          "observe": "Notice cloud cover, sunlight, wind, and ground conditions.",
+          "questions": [
+            "Which sign of weather changed most?",
+            "What would you probably feel if you were outside?"
+          ],
+          "safety": "Use permitted school paths, avoid roads and maintenance areas, and do not disturb other people.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 2.161,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 11,
+      "input": {
+        "age": 8,
+        "environment": "public park",
+        "topic": "microclimate",
+        "duration_minutes": 12
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three spots in the park with different sunlight exposure (full sun, partial shade, full shade) and observe the plants growing there.\",\n  \"observe\": \"Look closely at the leaves, stems, and flowers of plants in each spot.\",\n  \"questions\": [\n    \"Which plants look healthiest in the sunniest spot?\",\n    \"How do the leaves look different in the shade?\"\n  ],\n  \"safety\": \"Stay on marked paths, do not touch wildlife, and do not enter restricted areas.\",\n  \"reflection\": \"Discuss how sunlight affects plant growth and why different plants need different conditions.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 8.\n        *   Environment: public park.\n        *   Topic: microclimate.\n        *   Available time: 12 minutes.\n    *   **Input Data:** Age 8, Environment public park, Topic microclimate, Time 12 mins.\n\n2.  **Drafting the Content:**\n    *   *Mission",
+        "parsed_output": {
+          "mission": "Find three spots in the park with different sunlight exposure (full sun, partial shade, full shade) and observe the plants growing there.",
+          "observe": "Look closely at the leaves, stems, and flowers of plants in each spot.",
+          "questions": [
+            "Which plants look healthiest in the sunniest spot?",
+            "How do the leaves look different in the shade?"
+          ],
+          "safety": "Stay on marked paths, do not touch wildlife, and do not enter restricted areas.",
+          "reflection": "Discuss how sunlight affects plant growth and why different plants need different conditions."
+        },
+        "latency_seconds": 3.174,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 10 minutes, compare three nearby spots and notice which one feels coolest.\", \"observe\": \"Notice shade, nearby surfaces, vegetation, and airflow.\", \"questions\": [\"Which spot feels coolest?\", \"What visible feature may explain the difference?\"], \"safety\": \"Stay on permitted paths, away from roads and maintenance areas, and do not disturb wildlife.\", \"reflection\": \"Describe one feature you would probably have missed on a screen.\"}\n\n{\"mission\": \"In about 10 minutes, compare three nearby spots and notice which one feels coolest.\", \"observe\": \"Notice shade, nearby surfaces, vegetation, and airflow.\", \"questions\": [\"Which spot feels coolest?\", \"What visible feature may explain the difference?\"], \"safety\": \"Stay on permitted paths, away from roads and maintenance areas, and do not disturb wildlife.\", \"reflection\": \"Describe one feature you would probably have missed on a screen.\"}<|endoftext|>",
+        "parsed_output": null,
+        "latency_seconds": 3.2,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 3 column 1 (char 454)"
+        }
+      }
+    },
+    {
+      "case": 12,
+      "input": {
+        "age": 9,
+        "environment": "school playground",
+        "topic": "shadows",
+        "duration_minutes": 5
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find the shortest shadow and the longest shadow on the playground. Use a stick to measure the difference.\",\n  \"observe\": \"How shadows change length throughout the day.\",\n  \"questions\": [\n    \"Which object casts the shortest shadow?\",\n    \"What time of day do shadows appear longest?\"\n  ],\n  \"safety\": \"Stay on the playground, do not touch wildlife, and do not enter restricted areas.\",\n  \"reflection\": \"How does the sun's position affect the length of shadows?\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 9.\n        *   Environment: school playground.\n        *   Topic: shadows.\n        *   Available time: 5 minutes.\n    *   **Input Example:** The prompt actually includes a JSON example at the end, but the instruction says \"Return ONLY valid JSON using exactly this structure\". I need to make sure I follow the structure and constraints, potentially using the example as a guide but ensuring it meets all specific constraints (especially word count). Wait,",
+        "parsed_output": {
+          "mission": "Find the shortest shadow and the longest shadow on the playground. Use a stick to measure the difference.",
+          "observe": "How shadows change length throughout the day.",
+          "questions": [
+            "Which object casts the shortest shadow?",
+            "What time of day do shadows appear longest?"
+          ],
+          "safety": "Stay on the playground, do not touch wildlife, and do not enter restricted areas.",
+          "reflection": "How does the sun's position affect the length of shadows?"
+        },
+        "latency_seconds": 3.162,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 5 minutes, compare the length of your shadow to the shadow of a nearby stationary object.\", \"observe\": \"Notice how much of each shadow is in direct sunlight and whether any part falls into shade.\", \"questions\": [\"Which shadow is longer?\", \"Does the shadow length change as you move?\"], \"safety\": \"Stay within permitted school areas, avoid moving vehicles or maintenance zones, and do not climb fences.\", \"reflection\": \"Describe one feature of the shadow you noticed only because you looked carefully.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 5 minutes, compare the length of your shadow to the shadow of a nearby stationary object.",
+          "observe": "Notice how much of each shadow is in direct sunlight and whether any part falls into shade.",
+          "questions": [
+            "Which shadow is longer?",
+            "Does the shadow length change as you move?"
+          ],
+          "safety": "Stay within permitted school areas, avoid moving vehicles or maintenance zones, and do not climb fences.",
+          "reflection": "Describe one feature of the shadow you noticed only because you looked carefully."
+        },
+        "latency_seconds": 3.213,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 13,
+      "input": {
+        "age": 10,
+        "environment": "walking path",
+        "topic": "textures",
+        "duration_minutes": 10
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find 3 different textures on the path.\",\n  \"observe\": \"Look closely at the bark, leaves, and stones.\",\n  \"questions\": [\n    \"Which texture feels rough or smooth?\",\n    \"What makes one texture different from another?\"\n  ],\n  \"safety\": \"Do not touch wildlife or damage plants.\",\n  \"reflection\": \"Describe your favorite texture.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 10.\n        *   Environment: walking path.\n        *   Topic: textures.\n        *   Available time: 10 minutes.\n    *   **Input Data:** Age 10, Environment walking path, Topic textures, Time 10 mins.\n\n2.  **Drafting the Content:**\n    *   *Mission:* Find 3 different textures on the path. (Good, simple)\n    *   *Observe:* Look closely at the bark, leaves, and stones. (Good, specific)\n    *   *Questions:* Need",
+        "parsed_output": {
+          "mission": "Find 3 different textures on the path.",
+          "observe": "Look closely at the bark, leaves, and stones.",
+          "questions": [
+            "Which texture feels rough or smooth?",
+            "What makes one texture different from another?"
+          ],
+          "safety": "Do not touch wildlife or damage plants.",
+          "reflection": "Describe your favorite texture."
+        },
+        "latency_seconds": 4.186,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 10 minutes, find three natural surfaces with noticeably different textures.\", \"observe\": \"Use your fingertips to feel the surfaces without removing them from their surroundings.\", \"questions\": [\"Which two surfaces feel most similar?\", \"Which surface feels roughest?\"], \"safety\": \"Stay on the permitted path, remain aware of cyclists and vehicles, and do not enter restricted areas.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 10 minutes, find three natural surfaces with noticeably different textures.",
+          "observe": "Use your fingertips to feel the surfaces without removing them from their surroundings.",
+          "questions": [
+            "Which two surfaces feel most similar?",
+            "Which surface feels roughest?"
+          ],
+          "safety": "Stay on the permitted path, remain aware of cyclists and vehicles, and do not enter restricted areas.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 3.21,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 14,
+      "input": {
+        "age": 11,
+        "environment": "home garden",
+        "topic": "plants",
+        "duration_minutes": 20
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three different plants in your garden that grow in different directions (up, sideways, or down).\",\n  \"observe\": \"Look closely at the stems and leaves of each plant to see how they grow.\",\n  \"questions\": [\n    \"How does the plant's growth direction help it get sunlight?\",\n    \"What do you notice about the leaves on the plant growing sideways?\"\n  ],\n  \"safety\": \"Do not touch wildlife, do not damage plants, and stay within the garden boundaries.\",\n  \"reflection\": \"Write down one thing you learned about how plants grow.\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different plants in your garden that grow in different directions (up, sideways, or down).\",\n  \"observe\": \"Look closely at the stems and leaves of each plant to see how they grow.\",\n  \"questions\": [\n    \"How does the plant's growth direction help it get sunlight?\",\n    \"What do you notice about the leaves on the plant growing sideways?\"\n  ],\n  \"safety\": \"Do not touch wildlife, do not damage plants, and stay within the garden boundaries.\",\n  \"reflection\": \"Write down one thing you learned about how plants grow.\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different plants in your garden that grow in different directions (up, sideways, or down).\",\n  \"observe\": \"Look closely at the garden to find plants growing up, sideways, or down.\",\n  \"questions\": [\n    \"How does the plant's growth direction help it get sunlight?\",\n    \"What do you notice about the leaves on the plant growing sideways?\"\n  ],\n  \"safety\": \"Do not touch wildlife, do not damage plants, and stay within the garden boundaries.\",\n  \"reflection\": \"Write down one thing you",
+        "parsed_output": null,
+        "latency_seconds": 3.168,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 12 column 1 (char 547)"
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 15 minutes, observe three plants without pulling them from the ground.\", \"observe\": \"Notice height, leaf shape, stem form, visible flowers, and apparent growth direction.\", \"questions\": [\"Which plant has the tallest visible stem?\", \"Which plant has the most distinctive leaf shape?\"], \"safety\": \"Stay within the safe garden area, away from tools and maintenance zones, and do not disturb other living things.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 15 minutes, observe three plants without pulling them from the ground.",
+          "observe": "Notice height, leaf shape, stem form, visible flowers, and apparent growth direction.",
+          "questions": [
+            "Which plant has the tallest visible stem?",
+            "Which plant has the most distinctive leaf shape?"
+          ],
+          "safety": "Stay within the safe garden area, away from tools and maintenance zones, and do not disturb other living things.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 3.212,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 15,
+      "input": {
+        "age": 12,
+        "environment": "community garden",
+        "topic": "clouds",
+        "duration_minutes": 8
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three different cloud shapes in the sky and sketch them.\",\n  \"observe\": \"Look up at the sky and identify clouds that look like animals, objects, or people.\",\n  \"questions\": [\n    \"Which cloud shape reminds you of something familiar?\",\n    \"How does the cloud's shape change as the sun moves?\"\n  ],\n  \"safety\": \"Stay on the grass, keep your face away from windows, and do not touch wildlife.\",\n  \"reflection\": \"Write down your sketches and describe how the clouds looked when you first saw them.\"\n}\n\n<think>\n\n</think>\n\n{\n  \"mission\": \"Find three different cloud shapes in the sky and sketch them.\",\n  \"observe\": \"Look up at the sky and identify clouds that look like animals, objects, or people.\",\n  \"questions\": [\n    \"Which cloud shape reminds you of something familiar?\",\n    \"How does the cloud's shape change as the sun moves?\"\n  ],\n  \"safety\": \"Stay on the grass, keep your face away from windows, and do not touch wildlife.\",\n  \"reflection\": \"Write down your sketches and describe how the clouds looked when you first saw them.\"\n}<|endoftext|>",
+        "parsed_output": null,
+        "latency_seconds": 3.157,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 12 column 1 (char 520)"
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 8 minutes, look up at the sky and compare three visible clouds.\", \"observe\": \"Notice shape, size, spacing, colour, and movement.\", \"questions\": [\"Which cloud looks largest?\", \"Which cloud moved the most?\"], \"safety\": \"Observe from a safe distance without climbing or disturbing the garden.\", \"reflection\": \"Describe one feature you would probably have missed on a screen.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 8 minutes, look up at the sky and compare three visible clouds.",
+          "observe": "Notice shape, size, spacing, colour, and movement.",
+          "questions": [
+            "Which cloud looks largest?",
+            "Which cloud moved the most?"
+          ],
+          "safety": "Observe from a safe distance without climbing or disturbing the garden.",
+          "reflection": "Describe one feature you would probably have missed on a screen."
+        },
+        "latency_seconds": 2.206,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 16,
+      "input": {
+        "age": 13,
+        "environment": "courtyard",
+        "topic": "seeds",
+        "duration_minutes": 18
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three different seeds in the courtyard and observe their shapes and textures.\",\n  \"observe\": \"Look closely at the seeds without touching them. Note their size, color, and surface patterns.\",\n  \"questions\": [\n    \"Which seed has the smoothest surface?\",\n    \"How does the seed's shape relate to its likely journey?\"\n  ],\n  \"safety\": \"Do not touch wildlife or enter restricted areas. Observe from a safe distance.\",\n  \"reflection\": \"Write a short note on how seeds help plants grow in different environments.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 13.\n        *   Environment: courtyard.\n        *   Topic: seeds.\n        *   Available time: 18 minutes.\n    *   **Input Data:** Age 13, Environment courtyard, Topic seeds, Time 18 mins.\n\n2.  **Drafting the Content:**\n    *   *Mission:* Find three different seeds in the courtyard and observe their shapes and textures",
+        "parsed_output": {
+          "mission": "Find three different seeds in the courtyard and observe their shapes and textures.",
+          "observe": "Look closely at the seeds without touching them. Note their size, color, and surface patterns.",
+          "questions": [
+            "Which seed has the smoothest surface?",
+            "How does the seed's shape relate to its likely journey?"
+          ],
+          "safety": "Do not touch wildlife or enter restricted areas. Observe from a safe distance.",
+          "reflection": "Write a short note on how seeds help plants grow in different environments."
+        },
+        "latency_seconds": 3.158,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 15 minutes, look for visible seeds or seed structures without picking them.\", \"observe\": \"Notice size, shape, colour, attachment, and how they move.\", \"questions\": [\"Which seed structure is largest?\", \"Which seed structure appears most suited for wind movement?\"], \"safety\": \"Stay away from stairs, rooftops, and maintenance areas, and do not disturb other people.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 15 minutes, look for visible seeds or seed structures without picking them.",
+          "observe": "Notice size, shape, colour, attachment, and how they move.",
+          "questions": [
+            "Which seed structure is largest?",
+            "Which seed structure appears most suited for wind movement?"
+          ],
+          "safety": "Stay away from stairs, rooftops, and maintenance areas, and do not disturb other people.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 2.219,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 17,
+      "input": {
+        "age": 14,
+        "environment": "school garden",
+        "topic": "biodiversity",
+        "duration_minutes": 7
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three different types of insects in the school garden and note their colors.\",\n  \"observe\": \"Look closely at the soil, leaves, and flowers for moving insects.\",\n  \"questions\": [\n    \"What colors do the insects have?\",\n    \"How many legs do they have?\"\n  ],\n  \"safety\": \"Do not touch wildlife, do not damage plants, and stay on marked paths.\",\n  \"reflection\": \"Write down your findings in a notebook.\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n        *   Age: 14.\n        *   Environment: school garden.\n        *   Topic: biodiversity.\n        *   Available time: 7 minutes.\n    *   **Input Example:** The prompt includes a JSON example at the end, but I need to generate *my own* JSON based on the rules, not just copy the example (though the example follows the rules, I should ensure mine is fresh and meets all criteria strictly). Wait, looking closely at the prompt, it says \"Return ONLY",
+        "parsed_output": {
+          "mission": "Find three different types of insects in the school garden and note their colors.",
+          "observe": "Look closely at the soil, leaves, and flowers for moving insects.",
+          "questions": [
+            "What colors do the insects have?",
+            "How many legs do they have?"
+          ],
+          "safety": "Do not touch wildlife, do not damage plants, and stay on marked paths.",
+          "reflection": "Write down your findings in a notebook."
+        },
+        "latency_seconds": 3.13,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 7 minutes, observe the living things in the safe area without removing anything.\", \"observe\": \"Notice visible signs of life such as movement, colour, shape, and repetition.\", \"questions\": [\"Which living thing appears most frequently?\", \"What kind of movement do you observe most often?\"], \"safety\": \"Use permitted paths, do not disturb other learners, and do not enter restricted areas.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 7 minutes, observe the living things in the safe area without removing anything.",
+          "observe": "Notice visible signs of life such as movement, colour, shape, and repetition.",
+          "questions": [
+            "Which living thing appears most frequently?",
+            "What kind of movement do you observe most often?"
+          ],
+          "safety": "Use permitted paths, do not disturb other learners, and do not enter restricted areas.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 2.201,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 18,
+      "input": {
+        "age": 15,
+        "environment": "school grounds",
+        "topic": "stones",
+        "duration_minutes": 15
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find 3 stones with unique textures and record their shapes.\",\n  \"observe\": \"Use your hands to feel rough, smooth, or jagged surfaces.\",\n  \"questions\": [\n    \"Which stone feels the smoothest?\",\n    \"Which stone has the most irregular edges?\"\n  ],\n  \"safety\": \"Do not touch wildlife or enter restricted areas.\",\n  \"reflection\": \"How does the texture of a stone relate to its environment?\"\n}\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with a specific structure.\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Include a clear safety instruction.\n        *   Mission must involve real-world observation.\n        *   Mission must be under 70 words.\n        *   Do not encourage tasting plants.\n        *   Do not touch wildlife.\n        *   Do not damage plants or property.\n        *   Do not enter unsafe or restricted areas.\n    *   **Input Parameters:**\n        *   Age: 15\n        *   Environment: school grounds\n        *   Topic: stones\n        *   Available time: 15 minutes\n\n2.  **Drafting the Content:**\n    *   *Mission:* Find 3 stones with unique textures and record their shapes. (Good, fits topic and time).\n    *   *Observe:* Use your hands to feel rough, smooth, or jagged surfaces. (Direct observation).\n    *   *Questions:*",
+        "parsed_output": {
+          "mission": "Find 3 stones with unique textures and record their shapes.",
+          "observe": "Use your hands to feel rough, smooth, or jagged surfaces.",
+          "questions": [
+            "Which stone feels the smoothest?",
+            "Which stone has the most irregular edges?"
+          ],
+          "safety": "Do not touch wildlife or enter restricted areas.",
+          "reflection": "How does the texture of a stone relate to its environment?"
+        },
+        "latency_seconds": 3.141,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 15 minutes, find three stones and compare them without moving them.\", \"observe\": \"Notice size, shape, colour, surface marks, and how they are positioned.\", \"questions\": [\"Which stone has the smoothest-looking surface?\", \"Which stone appears to have fallen from a higher place?\"], \"safety\": \"Use permitted school paths, avoid stairs and rooftops, and do not disturb other students.\", \"reflection\": \"Describe one feature you would probably have missed on a screen.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 15 minutes, find three stones and compare them without moving them.",
+          "observe": "Notice size, shape, colour, surface marks, and how they are positioned.",
+          "questions": [
+            "Which stone has the smoothest-looking surface?",
+            "Which stone appears to have fallen from a higher place?"
+          ],
+          "safety": "Use permitted school paths, avoid stairs and rooftops, and do not disturb other students.",
+          "reflection": "Describe one feature you would probably have missed on a screen."
+        },
+        "latency_seconds": 2.192,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 19,
+      "input": {
+        "age": 16,
+        "environment": "public park",
+        "topic": "soil",
+        "duration_minutes": 6
+      },
+      "baseline": {
+        "raw_output": "{\n  \"mission\": \"Find three different types of soil in the park and observe them up close.\",\n  \"observe\": \"Look at the color, texture, and what you can see in the soil.\",\n  \"questions\": [\n    \"What colors do you see in the soil?\",\n    \"What do you notice about the texture?\"\n  ],\n  \"safety\": \"Do not touch wildlife, do not damage plants, and stay on public paths.\",\n  \"reflection\": \"Write down your observations about the soil.\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different types of soil in the park and observe them up close.\",\n  \"observe\": \"Look at the color, texture, and what you can see in the safety.\",\n  \"questions\": [\n    \"What colors do you see in the soil?\",\n    \"What do you notice about the texture?\"\n  ],\n  \"safety\": \"Do not touch wildlife, do not damage plants, and stay on public paths.\",\n  \"reflection\": \"Write down your observations about the soil.\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different types of soil in the park and observe them up close.\",\n  \"observe\": \"Look at the color, texture, and what you can see in the safety.\",\n  \"questions\": [\n    \"What colors do you see in the soil?\",\n    \"What do you notice about the texture?\"\n  ],\n  \"safety\": \"Do not touch wildlife, do not damage plants, and stay on public paths.\",\n  \"reflection\": \"Write down your observations about the soil.\"\n}\n\nJSON:\n{\n  \"mission\": \"Find three different types of soil in the park and observe them up close.\",\n  \"observe\": \"Look at the color, texture, and what you can see in the",
+        "parsed_output": null,
+        "latency_seconds": 3.139,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 12 column 1 (char 431)"
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 6 minutes, find three visible soil patches and compare them without digging.\", \"observe\": \"Notice colour, moisture, visible particles, and nearby vegetation.\", \"questions\": [\"Which patch looks most stable?\", \"What nearby feature might explain the difference?\"], \"safety\": \"Stay on permitted paths, do not disturb wildlife, and do not damage plants.\", \"reflection\": \"Choose your strongest observation and explain what evidence supports it.\"}<|endoftext|>",
+        "parsed_output": {
+          "mission": "In about 6 minutes, find three visible soil patches and compare them without digging.",
+          "observe": "Notice colour, moisture, visible particles, and nearby vegetation.",
+          "questions": [
+            "Which patch looks most stable?",
+            "What nearby feature might explain the difference?"
+          ],
+          "safety": "Stay on permitted paths, do not disturb wildlife, and do not damage plants.",
+          "reflection": "Choose your strongest observation and explain what evidence supports it."
+        },
+        "latency_seconds": 2.184,
+        "metrics": {
+          "valid_json": true,
+          "all_fields_present": true,
+          "exactly_two_questions": true,
+          "outdoor_action": true,
+          "safety_present": true,
+          "reflection_present": true,
+          "mission_under_70_words": true,
+          "score": 7,
+          "max_score": 7,
+          "json_error": null
+        }
+      }
+    },
+    {
+      "case": 20,
+      "input": {
+        "age": 17,
+        "environment": "school playground",
+        "topic": "natural sounds",
+        "duration_minutes": 12
+      },
+      "baseline": {
+        "raw_output": "<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** TrailTutor, an outdoor learning mission designer.\n    *   **Task:** Create one concise, safe, age-appropriate outdoor learning mission.\n    *   **Goal:** Minimize screen time, encourage direct observation of the physical world.\n    *   **Output Format:** ONLY valid JSON with specific structure (`mission`, `observe`, `questions`, `safety`, `reflection`).\n    *   **Constraints:**\n        *   Exactly two questions.\n        *   Clear safety instruction.\n        *   Mission involves real-world observation.\n        *   Under 70 words total.\n        *   No tasting plants, touching wildlife, damaging plants/property, entering unsafe areas.\n        *   Age: 17 (High School).\n        *   Environment: School Playground.\n        *   Topic: Natural Sounds.\n        *   Available Time: 12 minutes.\n    *   **Output:** JSON only.\n\n2.  **Drafting the Content:**\n    *   *Mission:* Listen to the playground without devices.\n    *   *Observe:* Identify sounds made by wind, birds, or equipment.\n    *   *Questions:* 1. What sounds indicate movement? 2. Which sound is closest?\n    *   *Safety:* Stay on paths, no running, no touching animals.\n    *   *Reflection:* How did silence feel?\n\n3.  **Refining for Constraints (Word Count & JSON Structure):**\n    *   Need to ensure the total word count is under 70 words.\n    *   Need to ensure valid JSON syntax.\n    *   Need to ensure age-appropriate (17 years old).\n    *   Need to ensure topic (natural sounds) and environment (playground) are met.",
+        "parsed_output": null,
+        "latency_seconds": 3.138,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "tuned": {
+        "raw_output": "{\"mission\": \"In about 10 minutes, listen carefully for about one minute without moving.\", \"observe\": \"Notice the direction, repetition, and rhythm of each sound.\", \"questions\": [\"Which sound repeated most often?\", \"Which sound was easiest to locate?\"], \"safety\": \"Stay within permitted school areas, avoid moving vehicles, and do not disturb other people.\", \"reflection\": \"Describe one sound you would probably have missed on a screen.\"}\n\n{\"mission\": \"In about 10 minutes, listen carefully for about one minute without moving.\", \"observe\": \"Notice the direction, repetition, and rhythm of each sound.\", \"questions\": [\"Which sound repeated most often?\", \"Which sound was easiest to locate?\"], \"safety\": \"Stay within permitted school areas, avoid moving vehicles, and do not disturb other people.\", \"reflection\": \"Describe one sound you would probably have missed on a screen.\"}<|endoftext|>",
+        "parsed_output": null,
+        "latency_seconds": 3.219,
+        "metrics": {
+          "valid_json": false,
+          "all_fields_present": false,
+          "exactly_two_questions": false,
+          "outdoor_action": false,
+          "safety_present": false,
+          "reflection_present": false,
+          "mission_under_70_words": false,
+          "score": 0,
+          "max_score": 7,
+          "json_error": "Extra data: line 3 column 1 (char 439)"
+        }
+      }
+    }
+  ]
+}

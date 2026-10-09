@@ -1,0 +1,27 @@
+name: trailtutor-ai
+services:
+  - name: web
+    environment_slug: python
+    source_dir: /
+    dockerfile_path: Dockerfile
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /
+    envs:
+      - key: AI_MODE
+        value: demo
+        scope: RUN_TIME
+      - key: GEMMA_BASE_URL
+        value: ""
+        scope: RUN_TIME
+      - key: GEMMA_MODEL
+        value: gemma
+        scope: RUN_TIME
+      - key: TUNED_BASE_URL
+        value: ""
+        scope: RUN_TIME
+      - key: TUNED_MODEL
+        value: trailtutor-tuned
+        scope: RUN_TIME

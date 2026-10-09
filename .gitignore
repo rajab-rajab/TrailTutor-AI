@@ -1,0 +1,10 @@
+﻿.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+
+evaluation/results/*.json
+!evaluation/results/.gitkeep
+!evaluation/results/tinker_baseline_vs_tuned.json
+!evaluation/results/local_dataset_report.json

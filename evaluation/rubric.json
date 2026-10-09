@@ -1,0 +1,22 @@
+{
+  "structure": {
+    "weight": 2,
+    "description": "All required fields are present and questions contains exactly two items."
+  },
+  "outdoor_action": {
+    "weight": 2,
+    "description": "Mission requires a real-world action or observation."
+  },
+  "brevity": {
+    "weight": 1,
+    "description": "Mission text is concise enough to read quickly."
+  },
+  "safety": {
+    "weight": 2,
+    "description": "Includes a clear safety instruction."
+  },
+  "reflection": {
+    "weight": 1,
+    "description": "Includes a post-activity reflection."
+  }
+}

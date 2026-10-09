@@ -1,0 +1,127 @@
+{
+  "held_out_prompt_count": 20,
+  "status": "ready",
+  "note": "This report validates that a held-out evaluation set exists. It does not claim model performance.",
+  "prompts": [
+    {
+      "age": 9,
+      "environment": "school garden",
+      "topic": "insects",
+      "duration_minutes": 6
+    },
+    {
+      "age": 10,
+      "environment": "school grounds",
+      "topic": "symmetry",
+      "duration_minutes": 12
+    },
+    {
+      "age": 11,
+      "environment": "public park",
+      "topic": "leaves",
+      "duration_minutes": 5
+    },
+    {
+      "age": 12,
+      "environment": "school playground",
+      "topic": "colours in nature",
+      "duration_minutes": 10
+    },
+    {
+      "age": 13,
+      "environment": "walking path",
+      "topic": "habitats",
+      "duration_minutes": 20
+    },
+    {
+      "age": 14,
+      "environment": "home garden",
+      "topic": "wind",
+      "duration_minutes": 8
+    },
+    {
+      "age": 15,
+      "environment": "community garden",
+      "topic": "sunlight",
+      "duration_minutes": 18
+    },
+    {
+      "age": 16,
+      "environment": "courtyard",
+      "topic": "patterns",
+      "duration_minutes": 7
+    },
+    {
+      "age": 17,
+      "environment": "school garden",
+      "topic": "tree bark",
+      "duration_minutes": 15
+    },
+    {
+      "age": 7,
+      "environment": "school grounds",
+      "topic": "weather",
+      "duration_minutes": 6
+    },
+    {
+      "age": 8,
+      "environment": "public park",
+      "topic": "microclimate",
+      "duration_minutes": 12
+    },
+    {
+      "age": 9,
+      "environment": "school playground",
+      "topic": "shadows",
+      "duration_minutes": 5
+    },
+    {
+      "age": 10,
+      "environment": "walking path",
+      "topic": "textures",
+      "duration_minutes": 10
+    },
+    {
+      "age": 11,
+      "environment": "home garden",
+      "topic": "plants",
+      "duration_minutes": 20
+    },
+    {
+      "age": 12,
+      "environment": "community garden",
+      "topic": "clouds",
+      "duration_minutes": 8
+    },
+    {
+      "age": 13,
+      "environment": "courtyard",
+      "topic": "seeds",
+      "duration_minutes": 18
+    },
+    {
+      "age": 14,
+      "environment": "school garden",
+      "topic": "biodiversity",
+      "duration_minutes": 7
+    },
+    {
+      "age": 15,
+      "environment": "school grounds",
+      "topic": "stones",
+      "duration_minutes": 15
+    },
+    {
+      "age": 16,
+      "environment": "public park",
+      "topic": "soil",
+      "duration_minutes": 6
+    },
+    {
+      "age": 17,
+      "environment": "school playground",
+      "topic": "natural sounds",
+      "duration_minutes": 12
+    }
+  ]
+}

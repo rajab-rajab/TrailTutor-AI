@@ -1,0 +1,11 @@
+{
+  "name": "TrailTutor AI",
+  "version": "0.1.0",
+  "challenge": "DEV Hacktoberfest Week 1 2026 - Touch Grass",
+  "target_integrations": [
+    "Gemma",
+    "Tinker",
+    "DigitalOcean"
+  ],
+  "status": "starter-ready"
+}
