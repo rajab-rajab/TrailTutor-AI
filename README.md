@@ -1,95 +1,102 @@
 # TrailTutor AI
 
-**TrailTutor AI** is an open-source outdoor learning companion for the DEV Hacktoberfest Week 1 "Touch Grass" challenge.
-
-The core product idea is simple:
+**TrailTutor AI** is an open-source outdoor learning companion built for the DEV Hacktoberfest Week 1 2026 **Touch Grass** challenge.
 
 > Generate one short learning mission, put the screen away, explore the real world, then return only to reflect.
 
-## Target stack
+## Live demo
 
-- **Gemma** — open-weight baseline mission generator
-- **Tinker** — fine-tuning workflow for a specialized outdoor-learning model
-- **DigitalOcean** — deployment target for the public app/API
-- **FastAPI** — backend
-- **Plain HTML/CSS/JavaScript** — lightweight frontend
+https://trailtutor-ai.onrender.com/
 
-## What is included
+## What it does
 
-- Working FastAPI app
-- Browser UI
-- `/api/mission` endpoint for the Gemma baseline
-- `/api/tuned-mission` endpoint for a tuned-model endpoint
-- `/api/compare` endpoint for side-by-side comparison
-- Deterministic demo mode when no model endpoint is configured
-- Tinker-oriented training dataset
-- Evaluation script and rubric
-- Dockerfile
-- DigitalOcean App Platform spec
-- `.env.example`
-- GitHub-ready `.gitignore`
+A learner selects an age, environment, topic, and available time. TrailTutor generates one concise outdoor mission with a real-world observation task, exactly two guiding questions, a safety instruction, and a short reflection prompt.
 
-## Quick start on Windows PowerShell
+The design goal is simple: **the screen should be the shortest part of the experience.**
 
-```powershell
-cd TrailTutor-AI
+## Technology stack
 
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+- **Gemma:** `google/diffusiongemma-26b-a4b-it`, served through the NVIDIA API
+- **Tinker:** LoRA fine-tuning of `Qwen/Qwen3.5-4B`
+- **Render:** public Docker deployment of the FastAPI application
+- **FastAPI:** backend API
+- **HTML / CSS / JavaScript:** lightweight frontend
 
-pip install -r requirements.txt
-
-Copy-Item .env.example .env
-
-uvicorn app.main:app --reload
-```
-
-Open:
+## Architecture
 
 ```text
-http://127.0.0.1:8000
+Browser
+  |
+  v
+TrailTutor FastAPI app on Render
+  |
+  +--> NVIDIA API
+  |      google/diffusiongemma-26b-a4b-it
+  |
+  +--> Tinker experiment
+         Qwen/Qwen3.5-4B
+              |
+              +--> untuned baseline
+              +--> LoRA-tuned TrailTutor checkpoint
 ```
 
-## Model modes
+## Verified Tinker experiment
 
-TrailTutor supports three practical modes.
+### Training configuration
 
-### 1. Demo mode
+- Base model: `Qwen/Qwen3.5-4B`
+- Training examples: **80**
+- Held-out evaluation cases: **20**
+- LoRA rank: **16**
+- Epochs: **1**
+- Batch size: **4**
+- Learning rate: **1e-4**
 
-No AI credentials are needed.
+### Corrected held-out results
 
-```env
-AI_MODE=demo
+The first evaluation used a strict JSON parser that rejected outputs when a model emitted two consecutive valid JSON objects. A documented v1.1 rescore parses the first complete JSON object while preserving the original raw output and original evaluation file.
+
+| Metric | Untuned baseline | Tinker-tuned |
+|---|---:|---:|
+| Overall rubric score | 95% | **100%** |
+| Valid JSON | 19/20 | **20/20** |
+| All required fields | 19/20 | **20/20** |
+| Exactly two questions | 19/20 | **20/20** |
+| Outdoor action present | 19/20 | **20/20** |
+| Safety present | 19/20 | **20/20** |
+| Reflection present | 19/20 | **20/20** |
+| Mission under 70 words | 19/20 | **20/20** |
+| Average latency | 3.355 s | **2.907 s** |
+
+The tuned model improved the held-out structured-output score by **5 percentage points** and reduced average latency by about **13.4%**.
+
+Evidence:
+
+```text
+evaluation/results/tinker_baseline_vs_tuned.json
+evaluation/results/tinker_baseline_vs_tuned_rescored_v1_1.json
 ```
 
-This lets you build, test, record screenshots, and deploy the basic app before configuring external model services.
+## Dataset
 
-### 2. Gemma through an OpenAI-compatible endpoint
+The dataset includes:
 
-Use a local or hosted endpoint that exposes an OpenAI-compatible `/v1/chat/completions` API.
+- **80** supervised training examples
+- **20** held-out evaluation prompts
+- ages **7–17**
+- **8** outdoor environments
+- **20** topics
+- **9** activity durations
 
-Example:
+The held-out prompts have no exact input overlap with the training set.
 
-```env
-AI_MODE=remote
-GEMMA_BASE_URL=http://127.0.0.1:8080/v1
-GEMMA_MODEL=gemma
-GEMMA_API_KEY=
+Key files:
+
+```text
+training/dataset/train.jsonl
+training/dataset/eval.jsonl
+training/dataset/train_messages.jsonl
 ```
-
-You can point this at a compatible Gemma server running locally or on infrastructure you control.
-
-### 3. Tuned model endpoint
-
-After training/exporting your specialized model, set:
-
-```env
-TUNED_BASE_URL=https://your-endpoint.example/v1
-TUNED_MODEL=trailtutor-tuned
-TUNED_API_KEY=
-```
-
-The app deliberately keeps the tuned-model serving layer separate from the training workflow. This avoids coupling the product to one serving vendor.
 
 ## API
 
@@ -99,14 +106,14 @@ The app deliberately keeps the tuned-model serving layer separate from the train
 GET /api/health
 ```
 
-### Baseline mission
+### Generate a Gemma mission
 
 ```http
 POST /api/mission
 Content-Type: application/json
 ```
 
-Example:
+Example request:
 
 ```json
 {
@@ -117,109 +124,67 @@ Example:
 }
 ```
 
-### Tuned-model mission
+### Tuned-model adapter
 
 ```http
 POST /api/tuned-mission
 ```
 
-### Baseline vs tuned comparison
+### Compare model paths
 
 ```http
 POST /api/compare
 ```
 
-## DigitalOcean deployment
+## Local setup
+
+```powershell
+cd TrailTutor-AI
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+Copy-Item .env.example .env
+python -m uvicorn app.main:app --reload
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000
+```
+
+## Tinker workflow
 
 The repository contains:
 
 ```text
-.do/app.yaml
-Dockerfile
+training/run_tinker_sft.py
+evaluation/evaluate_tinker.py
+evaluation/rescore_existing_outputs.py
 ```
 
-Recommended path:
+The held-out evaluation compares the same base model before and after LoRA fine-tuning.
 
-1. Push the repository to GitHub.
-2. Create a DigitalOcean App Platform app from the repository.
-3. Configure the environment variables in DigitalOcean.
-4. Deploy.
-5. If you later serve Gemma from a GPU Droplet or another model service, set `GEMMA_BASE_URL` to that endpoint.
+## Render deployment
 
-Do **not** commit API keys.
+The public app is deployed from this GitHub repository using the root `Dockerfile`. Render hosts the FastAPI web service while Gemma inference is handled by the NVIDIA API.
 
-## Tinker experiment
+Live URL: https://trailtutor-ai.onrender.com/
 
-The `training/` folder contains:
+## Challenge categories
 
-- `dataset/train.jsonl`
-- `dataset/eval.jsonl`
-- `train_tinker.py`
-- `README.md`
+TrailTutor genuinely implements technology relevant to:
 
-The training script is intentionally conservative: it prepares the experiment and validates data without pretending a training run happened.
+- Overall **Touch Grass** challenge
+- **Best Use of Gemma**
+- **Best Use of Tinker**
+- **Best Use of Render**
 
-For the final hackathon submission, record:
+## Why this project matters
 
-- exact base model
-- training configuration
-- number of examples
-- evaluation prompts
-- baseline results
-- tuned results
-- latency/cost measurements if available
+TrailTutor uses AI to shorten screen time rather than extend it. The model gives the learner one clear mission, then the learner leaves the device and engages with the physical environment.
 
-Do not publish invented improvements.
-
-## Evaluation
-
-Run:
-
-```powershell
-python evaluation/evaluate.py
-```
-
-This validates the held-out examples and writes:
-
-```text
-evaluation/results/local_dataset_report.json
-```
-
-Once both baseline and tuned APIs are configured:
-
-```powershell
-python evaluation/compare_live.py
-```
-
-That creates:
-
-```text
-evaluation/results/live_comparison.json
-```
-
-## Suggested hackathon categories
-
-Use only categories that are genuinely implemented and demonstrated.
-
-- Overall "Touch Grass"
-- Best Use of Gemma
-- Best Use of Tinker
-- Best Use of DigitalOcean
-
-## Project story
-
-TrailTutor is deliberately not a long-form chatbot.
-
-A user selects:
-
-- age
-- environment
-- topic
-- available time
-
-TrailTutor generates a short outdoor task. The user leaves the screen, completes it, and comes back for a brief reflection.
-
-This makes the AI useful precisely because it helps the user stop using the AI for a while.
+The project also treats specialization as an experiment rather than a marketing claim: training data, held-out prompts, raw outputs, parser behavior, and corrected evaluation evidence are kept in the repository.
 
 ## License
 
